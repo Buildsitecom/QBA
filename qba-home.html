@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QBA — Premium Real Estate Advisory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #e6c36a; /* brighter premium gold */
+      --text-muted: #b8b8b8;
+      --card-bg: rgba(255,255,255,0.03);
+      --shadow: 0 8px 24px rgba(0,0,0,0.6);
+      --border-glow: rgba(230,195,106,0.6);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background: url('bg.sections.png') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 80px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background: transparent;
+    }
+
+    nav a {
+      margin: 0 16px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    .btn {
+      border: 1px solid var(--gold);
+      padding: 10px 24px;
+      border-radius: 8px;
+      color: var(--gold);
+      background: transparent;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      background: rgba(230,195,106,0.12);
+      box-shadow: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('hero-2.png') center/cover no-repeat;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 32px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+
+    .hero .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+        @media (max-width: 900px) {
+      header { padding: 24px 16px; }
+      .hero h1 { font-size: 42px; }
+      .hero p { font-size: 16px; }
+      .hero .actions { flex-direction: column; gap: 12px; }
+      .expertise-grid { grid-template-columns: 1fr; gap: 24px; }
+      .premium-text { font-size: 22px; margin: 80px auto 80px; }
+      .philosophy-inner { padding: 0 16px; }
+    
+      .hero h1 { font-size: 42px; }
+      .hero p { font-size: 16px; }
+      .hero .actions { flex-direction: column; gap: 12px; }
+      .expertise-grid { grid-template-columns: 1fr; gap: 24px; }
+      .premium-text { font-size: 22px; margin: 80px auto 80px; }
+    }
+
+
+    /* Premium Text under Hero */
+    .premium-text {
+      text-align: center;
+      font-size: 26px;
+      max-width: 900px;
+      margin: 60px auto 80px; /* spacing from hero */
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .premium-text::after {
+      content: '';
+      display: block;
+      width: 360px;
+      height: 2px;
+      margin: 24px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* =========================
+   PREMIUM TEXT — MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .premium-text {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 0 18px;
+    margin: 48px auto 64px;
+  }
+
+  .premium-text::after {
+    width: 200px;
+    margin-top: 20px;
+  }
+}
+
+    /* Our Expertise Section */
+    .expertise {
+      position: relative;
+      padding: 80px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: transparent; /* original image shows without dark overlay */
+    }
+
+    .expertise h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+.section-line {
+  width: 360px;
+  max-width: 70%;
+  height: 2px;
+  margin: 18px auto 40px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+@media (max-width: 600px) {
+  .section-line {
+    max-width: 220px;
+  }
+}
+
+
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .expertise-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(201,164,92,0.5);
+    }
+
+    .expertise-card .icon {
+      font-size: 38px;
+      margin-bottom: 18px;
+      color: var(--gold);
+      text-shadow: none;
+    }
+
+    .expertise-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .expertise-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+   OUR EXPERTISE — MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .expertise {
+    padding: 72px 20px;
+  }
+
+  .expertise h2 {
+    font-size: 30px;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  .section-line {
+    width: 220px;
+    margin: 16px auto 32px;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .expertise-card {
+    padding: 32px 22px;
+    border-radius: 14px;
+  }
+
+  .expertise-card .icon {
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+
+  .expertise-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .expertise-card p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Kill hover illusion on mobile */
+  .expertise-card:hover {
+    transform: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
+}
+
+
+    /* Our Philosophy Section */
+    .philosophy {
+      padding: 120px 80px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .philosophy-inner {
+      max-width: 900px;
+    }
+
+    .philosophy-icon {
+      font-size: 34px;
+      color: #e6c36a;
+      margin-bottom: 18px;
+    }
+
+    .philosophy h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .section-line {
+      width: 360px;
+      height: 2px;
+      margin: 18px auto 36px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .philosophy-lead {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .philosophy p {
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+/* ============================= */
+/* DESKTOP DEFAULT (UNCHANGED)  */
+/* ============================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Burger hidden on desktop */
+.burger {
+  display: none;
+}
+
+/* ============================= */
+/* MOBILE RESPONSIVE NAV         */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  /* Header spacing fix */
+  header {
+    padding: 18px 20px;
+  }
+
+  /* Burger visible on mobile */
+  .burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: var(--gold);
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+  }
+
+  /* Burger animation */
+  .burger i {
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+
+  .burger.active i {
+    transform: rotate(90deg);
+  }
+
+  /* Mobile menu base (hidden) */
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+
+    transform: translateY(-100%);
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+
+    z-index: 1000;
+  }
+
+  /* Mobile menu active */
+  .nav-links.active {
+    transform: translateY(0);
+  }
+
+  /* Mobile links styling */
+  .nav-links a {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Button spacing on mobile */
+  .nav-links .btn {
+    margin-top: 16px;
+    padding: 14px 34px;
+    font-size: 14px;
+  }
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonials-section {
+  padding: 120px 80px;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+}
+
+.testimonials-lead {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  color: #fff;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-glow);
+  border-radius: 18px;
+  padding: 40px 28px;
+  box-shadow: var(--shadow);
+}
+
+.testimonial-avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-text {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.testimonial-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+
+  .testimonials-section {
+    padding: 90px 20px;
+  }
+
+  .testimonials-section h2 {
+    font-size: 34px;
+  }
+
+  .testimonials-section .gold-line {
+    width: 80px;
+    margin: 14px auto 28px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .testimonials-lead {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .testimonial-text {
+    font-size: 15.5px;
+  }
+}
+
+/* ================= OUTRO CTA ================= */
+
+.outro-cta {
+  padding: 140px 80px 120px;
+  text-align: center;
+}
+
+.outro-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.outro-text {
+  max-width: 760px;
+  margin: 0 auto 22px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.outro-subtext {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 36px;
+  letter-spacing: 0.6px;
+}
+
+.outro-btn {
+  padding: 14px 40px;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+
+  .outro-cta {
+    padding: 90px 20px;
+  }
+
+  .outro-cta h2 {
+    font-size: 32px;
+  }
+
+  .outro-cta .gold-line {
+    width: 80px;
+    margin: 14px auto 26px;
+  }
+
+  .outro-text {
+    font-size: 16px;
+  }
+
+  .outro-subtext {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="QBA Logo" style="height:90px; z-index:10;">
+
+  <nav class="nav-links" id="navLinks">
+    <a href="qba-home.html">Home</a>
+    <a href="qba-about.html">About</a>
+    <a href="qba-contact.html">Contact</a>
+    <a class="btn" href="qba-contact.html">Contact Now</a>
+  </nav>
+
+  <div class="burger" id="burger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</header>
+
+
+
+
+<section class="hero">
+  <h1>Redefining Luxury Real Estate</h1>
+  <p>Exclusive properties. Trusted advisors. Premium experience.</p>
+  <div class="actions">
+    <button class="btn">Let's Connect</button>
+  </div>
+</section>
+
+<!-- Premium Text Line -->
+<div class="premium-text">A premium real estate agency built on trust, discretion and long-term value.</div>
+
+<!-- Our Philosophy -->
+<section class="philosophy">
+  <div class="philosophy-inner">
+    <div class="philosophy-icon"><i class="fa-solid fa-gem"></i></div>
+    <h2>Our Philosophy</h2>
+    <div class="section-line"></div>
+    <p class="philosophy-lead">
+      At QBA, real estate is not a transaction — it is a responsibility.
+    </p>
+    <p>
+      We believe true luxury lies in discretion, long-term value, and decisions made with absolute clarity. Every property we advise on is evaluated not just for today, but for its future relevance, growth, and legacy.
+    </p>
+    <p>
+      Our role is to protect our clients from noise, shortcuts, and short-term thinking — replacing it with strategy, insight, and trust built over time.
+    </p>
+  </div>
+</section>
+
+<!-- Our Expertise Section -->
+<section class="expertise">
+  <h2>Our Expertise</h2>
+  <div class="section-line"></div>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
+      <h3>Luxury Real Estate Advisory</h3>
+      <p>Helping clients navigate high-value property decisions with clarity and confidence.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Investment Consultation</h3>
+      <p>Strategic guidance for long-term property investments and portfolio growth.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <h3>Market Insight & Valuation</h3>
+      <p>Data-driven insights to identify real opportunities in premium locations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose QBA -->
+<section class="expertise" style="padding-top:60px;">
+  <h2>Why Choose QBA</h2>
+  <div class="section-line"></div>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+      <h3>Prime Markets</h3>
+      <p>Access to the most sought-after areas.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <h3>Transparent Process</h3>
+      <p>Clear guidance and open communication.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-headset"></i></div>
+      <h3>Trusted Advisors</h3>
+      <p>Experienced professionals at your service.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Our Process -->
+<section class="expertise" style="padding-top:40px;">
+  <h2>Our Process</h2>
+  <div class="section-line"></div>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-comments"></i></div>
+      <h3>Understand</h3>
+      <p>We begin by understanding your goals, priorities, and long-term vision.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
+      <h3>Analyze</h3>
+      <p>Market insights and data-driven evaluation to identify true value.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+      <h3>Advise</h3>
+      <p>Clear, unbiased guidance focused on protection and growth.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <h2>Client Trust</h2>
+  <div class="section-line"></div>
+
+  <p class="testimonials-lead">
+    Relationships built on discretion, clarity, and long-term value.
+  </p>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">
+        <img src="client-1.jpg" alt="Client Photo">
+      </div>
+      <p class="testimonial-text">
+        QBA guided us through a high-value acquisition with absolute transparency. Their judgment and market insight were exceptional.
+      </p>
+      <h4 class="testimonial-name">— Private Investor</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">
+        <img src="client-2.jpg" alt="Client Photo">
+      </div>
+      <p class="testimonial-text">
+        Every decision felt protected. No pressure, no noise — only strategy and clarity.
+      </p>
+      <h4 class="testimonial-name">— Family Office Client</h4>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">
+        <img src="client-3.jpg" alt="Client Photo">
+      </div>
+      <p class="testimonial-text">
+        QBA doesn’t sell properties. They protect capital. That difference matters.
+      </p>
+      <h4 class="testimonial-name">— International Buyer</h4>
+    </div>
+
+  </div>
+</section>
+
+<section class="outro-cta">
+  <h2>When the Decision Matters</h2>
+  <div class="section-line"></div>
+
+  <p class="outro-text">
+    Whether you are protecting capital, securing a legacy asset, or entering a market that demands precision —
+    QBA provides judgment before action.
+  </p>
+
+  <p class="outro-subtext">
+    Discreet. Strategic. Long-term focused.
+  </p>
+
+  <button class="btn outro-btn">Request a Private Consultation</button>
+</section>
+
+
+
+<!-- Footer -->
+<footer style="text-align:center; padding:60px 24px 40px;">
+  <img src="logo.png" alt="QBA" style="height:110px; margin-bottom:-20px;">
+  <p style="font-family:'Playfair Display',serif; color:var(--text-muted); margin-bottom:20px;">Premium Real Estate Advisory</p>
+
+  <div style="display:flex; justify-content:center; gap:22px; margin-bottom:18px;">
+    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" style="font-size:18px; color:var(--gold);"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" style="font-size:18px; color:var(--gold);"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" style="font-size:18px; color:var(--gold);"></i></a>
+  </div>
+
+  <p style="font-size:13px; color:#999; display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <span><i class="fa-solid fa-phone" style="color:var(--gold); margin-right:6px;"></i>125-456-7890</span>
+    <span><i class="fa-solid fa-envelope" style="color:var(--gold); margin-right:6px;"></i>info@qbaestate.com</span>
+    <span><i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:6px;"></i>123, Luxury Ave, Uptown City</span>
+  </p>
+</footer>
+
+<script>
+  const burger = document.getElementById("burger");
+const navLinks = document.getElementById("navLinks");
+
+burger.addEventListener("click", () => {
+  burger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+</script>
+
+
+
+</body>
+</html>
